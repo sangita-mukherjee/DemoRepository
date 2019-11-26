@@ -26,8 +26,6 @@ public class NodeEntity implements Serializable{
 	private String root_node;
 
 	private Integer height;
-	@Transient
-    public ArrayList<NodeEntity> children; 
 	
 	public NodeEntity() {
 		super();
@@ -40,7 +38,7 @@ public class NodeEntity implements Serializable{
 		this.parent_node = parent_node;
 		this.root_node = root_node;
 		this.height = height;
-		children = new ArrayList<NodeEntity>(); 
+		//children = new ArrayList<NodeEntity>(); 
 	}
 	public Long getId() {
 		return id;
@@ -72,13 +70,5 @@ public class NodeEntity implements Serializable{
 	public void setHeight(Integer height) {
 		this.height = height;
 	}
-	public ArrayList<NodeEntity> getChildren() {
-		return children;
-	}
-	public void setChildren(ArrayList<NodeEntity> children) {
-		this.children = children;
-	}
 	
-	
-
 }
