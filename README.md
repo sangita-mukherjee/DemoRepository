@@ -1,6 +1,7 @@
-# DemoRepository 
+# DemoRepository  - SpringBoot Application With Maven 
 H2 in Memory DB has been used
 http://localhost:8080/h2-console
+
 
 #  REST API endpoints :<br>
  HTTP Method	URI	Description<br>
@@ -15,4 +16,3 @@ http://localhost:8080/h2-console
     "height": 3
 
   }
-
