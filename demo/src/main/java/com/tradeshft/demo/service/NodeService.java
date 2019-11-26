@@ -16,22 +16,14 @@ import com.tradeshft.demo.repository.NodeRepository;
 
 @Service
 public class NodeService {
-	Logger logger = LoggerFactory.getLogger(NodeService.class);
+	private static Logger logger = LoggerFactory.getLogger(NodeService.class);
 
 	@Autowired
 	private NodeRepository noderepo;	
 	private  Map<String, NodeEntity> childmap = new HashMap<>();
 	private int depth;
 	
-	/*Approach 1:Using Collection and Looping
-	 * Step1 : Get the depth of given node 
-	 * Collect all the data set where depth > given node level
-	 * Step2 :Filter the master list  with given parent node 
-	and depth to get 1st level child of the given node and 
-	collect to a separate map collection
-	/* Step3:  looping starts until master list becomes empty ,
-	 * we select grand children from each level and sequentially deleting
-	 * other nodes from masterlist for that level and so on  */
+	
 	 
 
 public Map<String,NodeEntity> collectchild(String nodeId) {
@@ -70,10 +62,7 @@ public Map<String,NodeEntity> collectchild(String nodeId) {
 	  
 		}
 		masterlist.clear();
-		for (String key : childmap.keySet()) {
-	        logger.info("Key : " + key + " value : " + childmap.get(key).getNode_id());
-	            
-	      }
+		
 		return childmap;
 	
 	}
@@ -103,14 +92,7 @@ public Map<String, List<NodeEntity>> updateParent(String nodeId,NodeEntity node)
     		.collect(Collectors.groupingBy(NodeEntity::getParent_node));
 	 
 	 logger.info("Size of the sibling Map list >>>"+siblingMap.size());
-	 for (String key : siblingMap.keySet()) {
-	        System.out.println("Key : " + key + " value : " + siblingMap.get(key));
-	        siblingMap
-	        .get(key).forEach(i -> System.out.println(i.getNode_id()));
-	        //.getValue().forEach(i -> System.out.println(i.getNode_id()));
-	                   
-	      }
-  
+	
     if(siblingMap.containsKey(existing_parent_id)) {
     	// update the parent for  all siblings
     	siblingMap
@@ -127,14 +109,7 @@ public Map<String, List<NodeEntity>> updateParent(String nodeId,NodeEntity node)
     	parent.add(parentNode);
     	siblingMap.put(new_parent_node_id,parent);
    
-  
-    for (String key : siblingMap.keySet()) {
-        System.out.println("Key : " + key + " value : " + siblingMap.get(key));
-        siblingMap
-        .get(key).forEach(i -> System.out.println(i.getNode_id()));
-        //.getValue().forEach(i -> System.out.println(i.getNode_id()));
-                   
-      }
+ 
     return siblingMap;
 }
 	

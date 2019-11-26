@@ -1,5 +1,7 @@
 package com.tradeshft.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -7,23 +9,26 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.tradeshft.demo.entity.NodeEntity;
 import com.tradeshft.demo.repository.NodeRepository;
+import com.tradeshft.demo.service.NodeService;
 
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner{
 	
+	private static Logger logger = LoggerFactory.getLogger(DemoApplication.class);
+	
 	@Autowired
 	private NodeRepository repository;
 
 	public static void main(String[] args) {
-		System.out.println(" Demo Application StartApplication...");
+		logger.info(" Demo Application Starting...");
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("StartApplication populating data in H2 db...");
+		logger.info("Demo Application populating data in H2 db...");
 		/*
 		NodeEntity root =new NodeEntity("root","null","null",0);
 		NodeEntity a =(new NodeEntity("a","root","root",1));
@@ -36,8 +41,6 @@ public class DemoApplication implements CommandLineRunner{
 		((root.children).get(0).children).add(d);
 		 //root.children.add(d);
 		repository.save(root);*/
-		
-	
 		repository.save(new NodeEntity("root","null","null",0));
 		repository.save(new NodeEntity("a","root","root",1));
 		repository.save(new NodeEntity("b","root","root",1));

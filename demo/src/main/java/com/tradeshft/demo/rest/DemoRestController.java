@@ -26,13 +26,15 @@ import com.tradeshft.demo.service.NodeService;
 @RestController
 @RequestMapping("/organisation/desecendants")
 public class DemoRestController {
-	Logger logger = LoggerFactory.getLogger(DemoRestController.class);
+	private static Logger logger = LoggerFactory.getLogger(DemoRestController.class);
 
 	@Autowired
 	private NodeRepository noderepo;
 
 	@Autowired
 	private NodeService service;
+	
+	
 	/* Aproach1 */
 
 	/**
@@ -44,17 +46,13 @@ public class DemoRestController {
 	 */
 	@RequestMapping(path = "/{nodeId}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Map<String, NodeEntity>> getAllDescendant(@PathVariable(value = "nodeId") String nodeId)
+	public ResponseEntity<Map<String, NodeEntity>> getAllDescendantById(@PathVariable(value = "nodeId") String nodeId)
 			throws NoSuchElementException {
-		
+	
 		Map<String, NodeEntity> descendants = service.collectchild(nodeId);
 
 		if (!descendants.isEmpty()) {
 			
-			/*return new Resource<>(descendants,
-				    linkTo(methodOn(DemoRestController.class).one(nodeId)).withSelfRel(),
-				    linkTo(methodOn(DemoRestController.class).all()).withRel("descendants"));
-*/
 			return new ResponseEntity<>(descendants, HttpStatus.OK);
 
 		} else {
@@ -104,6 +102,7 @@ public class DemoRestController {
 		}
 
 	}
+	
 
 	/**
 	 * Exception handler if NoSuchElementException is thrown in this Controller
