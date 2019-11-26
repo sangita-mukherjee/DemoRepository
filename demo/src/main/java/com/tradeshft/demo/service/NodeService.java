@@ -13,7 +13,11 @@ import org.springframework.stereotype.Service;
 
 import com.tradeshft.demo.entity.NodeEntity;
 import com.tradeshft.demo.repository.NodeRepository;
-
+/**
+ * Node Service
+ *
+ * Created by Sangita Mukherjee
+ */
 @Service
 public class NodeService {
 	private static Logger logger = LoggerFactory.getLogger(NodeService.class);
@@ -24,7 +28,13 @@ public class NodeService {
 	private int depth;
 	
 	
-	 
+	/**
+	 * collect all descendant of a given node.
+	 * 
+	 * @param nodeId
+	 * @return Map of descendant nodes
+	
+	 */
 
 public Map<String,NodeEntity> collectchild(String nodeId) {
 	

@@ -1,12 +1,16 @@
 package com.tradeshft.demo.repository;
 
 import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.tradeshft.demo.entity.NodeEntity;
+/**
+ * Node Repository
+ *
+ * Created by Sangita Mukherjee
+ */
 
 public interface NodeRepository extends CrudRepository<NodeEntity,Long>{
 	

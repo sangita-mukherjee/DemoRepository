@@ -21,7 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tradeshft.demo.entity.NodeEntity;
 import com.tradeshft.demo.repository.NodeRepository;
 import com.tradeshft.demo.service.NodeService;
-
+/**
+ * Demo Rest Controller
+ *
+ * Created by Sangita Mukherjee
+ */
 
 @RestController
 @RequestMapping("/organisation/desecendants")
